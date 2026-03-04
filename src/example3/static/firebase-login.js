@@ -102,7 +102,7 @@ function updateUI(cookie) {
 
 
 function parseCookieToken(cookie) {
-    var string = cookie.split(";")
+    var strings = cookie.split(";")
     for (let i = 0; i < strings.length; i++) {
         var temp = strings[i].split("=");
         if (temp[0] == "token")
