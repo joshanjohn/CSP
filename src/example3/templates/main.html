@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Firebase Login</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', path='style.css') }}" type="text/css">
+
+    <script type="module" src="{{ url_for('static', path='firebase-login.js') }}"></script>
+</head>
+<body>
+    
+    <div id="login-box" hidden="true">
+        Email: <input type="email" id="email">
+        Password: <input type="password" id="password">
+
+        <button id="login">Login</button>
+        <button id="sign-up">Sign up</button>
+    </div>
+
+    <button id="sign-out" hidden="true">Sign out</button>
+
+    {% if user_token %}
+        <p>User email: {{ user_token.email }}</p>
+        <p>Error message: {{ error_message }}</p>
+    {% endif %}
+
+</body>
+</html>
