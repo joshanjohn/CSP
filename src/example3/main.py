@@ -4,17 +4,16 @@ from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from google.oauth2.id_token import verify_firebase_token
 from google.auth.transport import requests
-from pathlib import Path
+import uvicorn
 
 app = FastAPI()
 
-BASE_DIR = Path(__file__).resolve().parent
 
 firebase_request_adapter = requests.Request()
 
 # Static + Templates
-app.mount("/static", StaticFiles(directory=BASE_DIR / "static"), name="static")
-templates = Jinja2Templates(directory=BASE_DIR / "templates")
+app.mount("/static", StaticFiles(directory="static"), name="static")
+templates = Jinja2Templates(directory="templates")
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -41,3 +40,7 @@ async def root(request: Request):
             "error_message": error_message
         }
     )
+
+
+if __name__ == "__main__": 
+    uvicorn.run(app="main:app", host="localhost", port=7070, reload=True)

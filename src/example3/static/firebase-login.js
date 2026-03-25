@@ -23,13 +23,13 @@ const firebaseConfig = {
 
 window.addEventListener("load", function () {
     const app = initializeApp(firebaseConfig)
-    const auth = getAuth()
+    const auth = getAuth(app)
 
 
     updateUI(document.cookie)
     console.log("Hello world load")
 
-
+    // sign up new user 
     this.document.getElementById("sign-up").addEventListener('click', function () {
         const email = document.getElementById("email").value
         const password = document.getElementById("password").value
@@ -52,7 +52,7 @@ window.addEventListener("load", function () {
     })
 
 
-    // login 
+    // login  user 
     document.getElementById("login").addEventListener('click',
         function () {
             const email = document.getElementById("email").value
